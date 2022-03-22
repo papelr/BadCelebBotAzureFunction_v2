@@ -42,8 +42,8 @@ def main(mytimer: func.TimerRequest) -> None:
     while attempts < 2:
         try:
             twitter_push.twit_push(consumer_key, consumer_secret,
-                                    access_token, access_token_secret,
-                                    celeb_tweet)
+                                   access_token, access_token_secret,
+                                   celeb_tweet)
             slack_notifications.post_worked()
             break
         except:
