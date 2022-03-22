@@ -113,7 +113,7 @@ def post_failed():
     # slack hook set-up
     url = slackhook
     # message = ("Twitter Notification Bot")
-    title = ("Tweet Posted Failed!")
+    title = ("Tweet Post Failed!")
 
     # data sent to slack hook
     slack_data = {
