@@ -1,0 +1,13 @@
+# DO NOT include azure-functions-worker in this file
+# The Python Worker is managed by Azure Functions platform
+# Manually managing azure-functions-worker may cause unexpected issues
+
+azure-functions
+pandas
+pyhyphen==4.0.1
+tweepy==3.10.0
+requests==2.25.1
+xlrd==1.2.0
+openpyxl==3.0.5
+azure-storage-blob
+azure-identity
