@@ -9,8 +9,9 @@ Created on Wed Mar 31 17:42:59 2021
 import json
 import sys
 import requests
-from BadCelebTimer.all_keys import slackhook
+# from BadCelebTimer.all_keys import slackhook
 
+slackhook = 'https://hooks.slack.com/services/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'
 
 # Twitter Post SUCCESS notification function ----
 def post_worked():
@@ -83,19 +84,3 @@ if __name__ == '__main__':
     post_failed()
 
 
-
-
-
-
-##### Detritus
-
-
-    # if this function gets a positive return from the scrape function
-    # if this function gets any error from the scrape function
-    # try:
-    #     function(*args)
-    #     print(function + ' worked!')
-    # except:
-    #     print(function + ' failed')
-    # finally:
-    #     pass
