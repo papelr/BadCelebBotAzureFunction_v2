@@ -35,8 +35,10 @@ def main(mytimer: func.TimerRequest) -> None:
     plain_name = name_handle_instance.name_insurance()
     print(plain_name)
 
-    # add in hashtags (like name, first and last together, and then last name tag)
-    
+    # Create hashtags ----
+    celeb_tweet = celeb_tweet + ' #' + plain_name.replace(
+        ' ', '') + ' #' + plain_name.split()[0] + ' #' + plain_name.split()[1] + ' #RealCelebrityNames' +  ' #bad_celeb_names'
+
     # Call twitter push script (with error handling & notifs) ----
     attempts = 0
     while attempts < 2:
