@@ -4,7 +4,7 @@ import datetime
 import logging
 from BadCelebTimer import random_name_gen_bot 
 from BadCelebTimer import name_twit_handle_select as dc
-from BadCelebTimer import slack_notifications
+# from BadCelebTimer import slack_notifications
 from BadCelebTimer import twitter_push
 from BadCelebTimer.all_keys import consumer_key, consumer_secret, access_token, access_token_secret # pylint: disable=relative-beyond-top-level
 import azure.functions as func
@@ -46,8 +46,10 @@ def main(mytimer: func.TimerRequest) -> None:
             twitter_push.twit_push(consumer_key, consumer_secret,
                                    access_token, access_token_secret,
                                    celeb_tweet)
-            slack_notifications.post_worked()
+            # slack_notifications.post_worked()
+            print('Tweet Posted!')
             break
         except:
             attempts += 1
-            slack_notifications.post_failed()
+            # slack_notifications.post_failed()
+            print('Tweet did NOT post')

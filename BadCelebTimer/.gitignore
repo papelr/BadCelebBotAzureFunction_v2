@@ -3,7 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 all_keys.py
-slack_notifications.py
 
 # C extensions
 *.so
