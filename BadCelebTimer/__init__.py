@@ -7,7 +7,7 @@ from BadCelebTimer import name_twit_handle_select as dc
 from BadCelebTimer import twitter_push
 # from BadCelebTimer.all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
 import azure.functions as func
-from .all_keys.py import consumer_key, consumer_secret, access_token, access_token_secret 
+from .all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
 
 
 def main(mytimer: func.TimerRequest) -> None:
