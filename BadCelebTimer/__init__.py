@@ -5,8 +5,9 @@ import logging
 from BadCelebTimer import random_name_gen_bot 
 from BadCelebTimer import name_twit_handle_select as dc
 from BadCelebTimer import twitter_push
-from BadCelebTimer.all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
+# from BadCelebTimer.all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
 import azure.functions as func
+from . import consumer_key, consumer_secret, access_token, access_token_secret 
 
 
 def main(mytimer: func.TimerRequest) -> None:
