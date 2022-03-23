@@ -9,8 +9,7 @@ Created on Wed Mar 31 17:42:59 2021
 import json
 import sys
 import requests
-# from BadCelebTimer.all_keys import slackhook
-import BadCelebTimer.all_keys 
+from . import slackhook
 
 
 # Twitter Post SUCCESS notification function ----
