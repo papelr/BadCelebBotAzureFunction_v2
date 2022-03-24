@@ -7,6 +7,7 @@ from . import name_twit_handle_select as dc # pylint: disable=relative-beyond-to
 from . import (random_name_gen_bot, slack_notifications, twitter_push) # pylint: disable=relative-beyond-top-level
 from .all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) # pylint: disable=relative-beyond-top-level
 
+# are the imports not working because the folder was changed? Probably remake folder structure, and re-deploy all resources?
 
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
