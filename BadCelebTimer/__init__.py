@@ -3,11 +3,9 @@ import logging
 import os
 import sys
 import azure.functions as func
-from BadCelebTimer import name_twit_handle_select as dc
-from BadCelebTimer import (random_name_gen_bot, slack_notifications,
-                           twitter_push)
-from BadCelebTimer.all_keys import (access_token, access_token_secret,
-                                    consumer_key, consumer_secret)
+from . import name_twit_handle_select as dc # pylint: disable=relative-beyond-top-level
+from . import (random_name_gen_bot, slack_notifications, twitter_push) # pylint: disable=relative-beyond-top-level
+from .all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) # pylint: disable=relative-beyond-top-level
 
 
 def main(mytimer: func.TimerRequest) -> None:

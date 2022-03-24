@@ -9,8 +9,8 @@ Created on Wed Mar 31 17:42:59 2021
 import json
 import sys
 import requests
-sys.path.append('/Users/robertpapel/Documents/BadCelebBotFunctionDirectory_v2.1/BadCelebBotAzureFunction_v2.1')
-from BadCelebTimer.all_keys import slackhook
+import os
+from .all_keys import slackhook
 
 # Twitter Post SUCCESS notification function ----
 def post_worked():
