@@ -1,13 +1,13 @@
-import sys
-import os
 import datetime
 import logging
-from BadCelebTimer import random_name_gen_bot 
-from BadCelebTimer import name_twit_handle_select as dc
-from BadCelebTimer import twitter_push
-# from BadCelebTimer.all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
+import os
+import sys
 import azure.functions as func
-from .all_keys import consumer_key, consumer_secret, access_token, access_token_secret 
+from BadCelebTimer import name_twit_handle_select as dc
+from BadCelebTimer import (random_name_gen_bot, slack_notifications,
+                           twitter_push)
+from BadCelebTimer.all_keys import (access_token, access_token_secret,
+                                    consumer_key, consumer_secret, slackhook)
 
 
 def main(mytimer: func.TimerRequest) -> None:
@@ -46,10 +46,10 @@ def main(mytimer: func.TimerRequest) -> None:
             twitter_push.twit_push(consumer_key, consumer_secret,
                                    access_token, access_token_secret,
                                    celeb_tweet)
-            # slack_notifications.post_worked()
-            print('Tweet Posted!')
+            slack_notifications.post_worked()
+            # print('Tweet Posted!')
             break
         except:
             attempts += 1
-            # slack_notifications.post_failed()
-            print('Tweet did NOT post')
+            slack_notifications.post_failed()
+            # print('Tweet did NOT post')
