@@ -7,7 +7,7 @@ from BadCelebTimer import name_twit_handle_select as dc
 from BadCelebTimer import (random_name_gen_bot, slack_notifications,
                            twitter_push)
 from BadCelebTimer.all_keys import (access_token, access_token_secret,
-                                    consumer_key, consumer_secret, slackhook)
+                                    consumer_key, consumer_secret)
 
 
 def main(mytimer: func.TimerRequest) -> None:
