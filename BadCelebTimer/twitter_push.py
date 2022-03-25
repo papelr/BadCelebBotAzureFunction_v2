@@ -1,11 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 26 17:26:39 2021
 
-@author: robertpapel
-"""
-
+# Packages
 import tweepy
 
 

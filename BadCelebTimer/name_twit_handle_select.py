@@ -1,11 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar 27 15:52:35 2021
 
-@author: robertpapel
-"""
-
+# Packages
 import pandas as pd
 import re
 

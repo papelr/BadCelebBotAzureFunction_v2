@@ -1,16 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 31 17:42:59 2021
 
-@author: robertpapel
-"""
-
+# Packages
 import json
 import sys
-import requests
 import os
-from .all_keys import slackhook
+import requests
+from BadCelebTimer.all_keys import slackhook
 
 # Twitter Post SUCCESS notification function ----
 def post_worked():

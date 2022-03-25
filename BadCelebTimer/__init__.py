@@ -1,27 +1,24 @@
-import datetime
-import logging
+
+# Packages
 import os
 import sys
+import datetime
+import logging
 import azure.functions as func
-from . import name_twit_handle_select as dc # pylint: disable=relative-beyond-top-level
-from . import (random_name_gen_bot, slack_notifications, twitter_push) # pylint: disable=relative-beyond-top-level
-from .all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) # pylint: disable=relative-beyond-top-level
-
-# are the imports not working because the folder was changed? Probably remake folder structure, and re-deploy all resources?
+from BadCelebTimer import name_twit_handle_select as dc 
+from BadCelebTimer import (random_name_gen_bot, slack_notifications, twitter_push) 
+from BadCelebTimer.all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) 
 
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
-
     if mytimer.past_due:
         logging.info('The timer is past due!')
-
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 
 
     # Class instantiation for the handling celeb name/twitter username ----
     name_handle_instance = dc.NameHandle()
-
 
     # Call random name generator script ----
     random_gen = random_name_gen_bot.name_gen()
@@ -46,9 +43,8 @@ def main(mytimer: func.TimerRequest) -> None:
                                    access_token, access_token_secret,
                                    celeb_tweet)
             slack_notifications.post_worked()
-            # print('Tweet Posted!')
             break
         except:
             attempts += 1
             slack_notifications.post_failed()
-            # print('Tweet did NOT post')
+

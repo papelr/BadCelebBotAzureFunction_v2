@@ -3,7 +3,7 @@ import ssl
 import random
 import pandas as pd
 import numpy as np
-from hyphen import Hyphenator  # pylint: disable=unused-import
+from hyphen import Hyphenator  
 
 
 # Stuck the whole thing in one large function for callability purposes
