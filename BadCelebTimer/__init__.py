@@ -7,7 +7,13 @@ import logging
 import azure.functions as func
 from BadCelebTimer import name_twit_handle_select as dc 
 from BadCelebTimer import (random_name_gen_bot, slack_notifications, twitter_push) 
-from BadCelebTimer.all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) 
+# from BadCelebTimer.all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) 
+
+# twitter keys
+consumer_key = os.getenv('TwitterConsumerKey')
+consumer_secret = os.getenv('TwitterConsumerSecretKey')
+access_token = os.getenv('TwitterAccessTokenKey')
+access_token_secret = os.getenv('TwitterAccessTokenSecret')
 
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(

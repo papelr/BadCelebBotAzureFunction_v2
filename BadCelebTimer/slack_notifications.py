@@ -4,7 +4,10 @@ import json
 import sys
 import os
 import requests
-from BadCelebTimer.all_keys import slackhook
+# from BadCelebTimer.all_keys import slackhook
+
+# use Azure Key Vault
+slackhook = os.getenv('SlackhookKey')
 
 # Twitter Post SUCCESS notification function ----
 def post_worked():
