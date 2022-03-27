@@ -6,15 +6,17 @@ import datetime
 import logging
 import azure.functions as func
 from BadCelebTimer import name_twit_handle_select as dc 
-from BadCelebTimer import (random_name_gen_bot, slack_notifications, twitter_push) 
-# from BadCelebTimer.all_keys import (access_token, access_token_secret, consumer_key, consumer_secret) 
+from BadCelebTimer import random_name_gen_bot
+from SharedCode import (twitter_push, slack_notifications)
 
-# twitter keys
+
+# Twitter keys ----
 consumer_key = os.getenv('TwitterConsumerKey')
 consumer_secret = os.getenv('TwitterConsumerSecretKey')
 access_token = os.getenv('TwitterAccessTokenKey')
 access_token_secret = os.getenv('TwitterAccessTokenSecret')
 
+# Function ----
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
@@ -39,7 +41,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
     # Create hashtags ----
     celeb_tweet = celeb_tweet + ' #' + plain_name.replace(
-        ' ', '') + ' #' + plain_name.split()[0] + ' #' + plain_name.split()[1] + ' #RealCelebrityNames' +  ' #bad_celeb_names'
+        ' ', '') + ' #' + plain_name.split()[0] + ' #' + plain_name.split()[1] + ' #RealCelebrityNames' 
 
     # Call twitter push script (with error handling & notifs) ----
     attempts = 0
