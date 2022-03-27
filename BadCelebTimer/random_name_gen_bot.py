@@ -13,7 +13,7 @@ def name_gen():
     def data_read():
 
         # read in names list
-        init_df = pd.read_csv('Spreadsheets-Bad/bot-name-list.csv')
+        init_df = pd.read_csv('BadCelebSpreadsheets/bot-name-list.csv')
         return init_df
 
 

@@ -8,7 +8,7 @@ class NameHandle():
 
     def __init__(self):
 
-        handle_csv = pd.read_csv('Spreadsheets-Bad/handle_list.csv', encoding='latin-1')
+        handle_csv = pd.read_csv('BadCelebSpreadsheets/handle_list.csv', encoding='latin-1')
         ran_line = handle_csv.sample(n = 1, replace = False)
         self.reg_name = ran_line['name'].to_string()
         # print("one" + self.reg_name)
