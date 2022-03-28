@@ -4,9 +4,9 @@
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "python",
     "SlackhookKey": "",
-    "TwitterConsumerKey": "",
-    "TwitterConsumerSecretKey" : "",
-    "TwitterAccessTokenKey" : "",
-    "TwitterAccessTokenSecret" : ""
+    "TwitterConsumerKey1": "",
+    "TwitterConsumerSecretKey1" : "",
+    "TwitterAccessTokenKey1" : "",
+    "TwitterAccessTokenSecret1" : ""
   }
 }

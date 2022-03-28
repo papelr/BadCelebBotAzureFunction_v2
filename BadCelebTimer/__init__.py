@@ -5,16 +5,17 @@ import sys
 import datetime
 import logging
 import azure.functions as func
-from BadCelebTimer import name_twit_handle_select as dc 
-from BadCelebTimer import random_name_gen_bot
+from SharedCode import name_twit_handle_select as dc 
+from SharedCode import random_name_gen_bot
 from SharedCode import (twitter_push, slack_notifications)
 
 
 # Twitter keys ----
-consumer_key = os.getenv('TwitterConsumerKey')
-consumer_secret = os.getenv('TwitterConsumerSecretKey')
-access_token = os.getenv('TwitterAccessTokenKey')
-access_token_secret = os.getenv('TwitterAccessTokenSecret')
+consumer_key = os.getenv('TwitterConsumerKey1')
+consumer_secret = os.getenv('TwitterConsumerSecretKey1')
+access_token = os.getenv('TwitterAccessTokenKey1')
+access_token_secret = os.getenv('TwitterAccessTokenSecret1')
+
 
 # Function ----
 def main(mytimer: func.TimerRequest) -> None:
