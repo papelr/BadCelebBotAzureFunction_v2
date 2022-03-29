@@ -6,6 +6,7 @@ import re
 # Class to keep celeb name the same throughout ----
 class NameHandle():
 
+    # Constructor function - read in the sheet
     def __init__(self):
 
         handle_csv = pd.read_csv('BadCelebSpreadsheets/handle_list.csv', encoding='latin-1')
@@ -13,6 +14,7 @@ class NameHandle():
         self.reg_name = ran_line['name'].to_string()
         # print("one" + self.reg_name)
         self.handle_tag = ran_line['handle'].to_string()
+
 
     # Regular Tweet: format randomly pulled celeb name and twitter handle
     def name_and_handle(self, gen_name):
@@ -26,6 +28,7 @@ class NameHandle():
         # print(name_hand_sent)
         return name_hand_sent
 
+
     def handle_only(self):
 
         # pull out just the handle and return!
@@ -34,6 +37,7 @@ class NameHandle():
         just_handle = " ".join(re.split("\s+", just_handle, flags = re.UNICODE))
         just_handle = just_handle.lstrip()
         return just_handle
+
 
     # Reply Tweet: format randomly pulled celeb name and twitter handle
     def name_and_handle_reply(self, gen_name):
@@ -46,6 +50,7 @@ class NameHandle():
                                            flags = re.UNICODE))
         # print(name_hand_sent)
         return name_hand_sent_reply    
+
 
     # function to keep celeb name the same through the entire process
     def name_insurance(self):

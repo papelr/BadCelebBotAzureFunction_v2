@@ -5,24 +5,22 @@ import tweepy
 # Twitter keys ----
 
 
-# user = api.get_user('apoorv__tyagi')
-# need to get tweet id, and then can reply to that
+# will put this into a Twitter/Tweepy CLASS - and move the auth parts
+# into the __init__ function (I think that is right...)
 
 def last_celeb_tweet(consumer_key, consumer_secret,
                      access_token, access_token_secret,
                      twit_handle):
+
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
-    statuses = api.user_timeline(screen_name=twit_handle)
-    test_id = api.get_status(statuses[1])
-    print(test_id)
 
-    return statuses[0].text, test_id
+    statuses = api.user_timeline(screen_name = twit_handle) 
+    statuses = statuses[0].id_str
+    # print(statuses)
 
-# Main function ----
-if __name__ == '__main__':
-    last_celeb_tweet()    
+    return statuses   
 
 last_celeb_tweet(consumer_key, consumer_secret,
                      access_token, access_token_secret,
