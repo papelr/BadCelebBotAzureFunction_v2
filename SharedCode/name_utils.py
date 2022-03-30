@@ -36,6 +36,8 @@ class NameHandle():
         just_handle = re.sub(r'\d+', '', just_handle)
         just_handle = " ".join(re.split("\s+", just_handle, flags = re.UNICODE))
         just_handle = just_handle.lstrip()
+        # print(just_handle)
+
         return just_handle
 
 
@@ -53,17 +55,13 @@ class NameHandle():
 
 
     # function to keep celeb name the same through the entire process
+    # NOT really useful
     def name_insurance(self):
 
         same_name = re.sub(r'\d+', '', self.reg_name)
         same_name = same_name.strip()
         # print(same_name)
+
         return same_name
 
-# Main function ----
-if __name__ == '__main__':
-    NameHandle().name_and_handle()
-    NameHandle().name_and_handle_reply()
-    NameHandle().handle_only()
-    NameHandle().name_insurance()
     

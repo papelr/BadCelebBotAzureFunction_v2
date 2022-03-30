@@ -2,8 +2,6 @@
 # Packages
 import tweepy
 
-# Twitter keys ----
-
 
 # will put this into a Twitter/Tweepy CLASS - and move the auth parts
 # into the __init__ function (I think that is right...)

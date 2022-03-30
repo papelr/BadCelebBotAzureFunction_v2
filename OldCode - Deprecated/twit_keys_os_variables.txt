@@ -1,0 +1,5 @@
+# Twitter keys ----
+consumer_key = os.getenv('TwitterConsumerKey1')
+consumer_secret = os.getenv('TwitterConsumerSecretKey1')
+access_token = os.getenv('TwitterAccessTokenKey1')
+access_token_secret = os.getenv('TwitterAccessTokenSecret1')

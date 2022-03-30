@@ -52,9 +52,14 @@ class TwitterOperations():
         # return the ID
         return tweet_id
 
-    def reply_to_tweet(self, reply_text, twitter_handle, tweet_id):
+    def reply_to_tweet(self, reply_text, tweet_id):
 
-        # set up the reply    
+        # set up the reply
+        self.api.update_status(reply_text, in_reply_to_status_id=tweet_id,
+                               auto_populate_reply_metadata=True) 
+    
 
-# Testing
-TwitterOperations().get_tweet_id('@bad_celeb_names')        
+# # Testing
+# TwitterOperations().get_tweet_id('@bad_celeb_names')        
+# TwitterOperations().reply_to_tweet('test reply @bad_celeb_names', 
+#                                     1509153488986595328) 

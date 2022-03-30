@@ -4,22 +4,18 @@ import sys
 import datetime
 import logging
 import azure.functions as func
-from SharedCode import name_twit_handle_select as dc 
+from SharedCode import name_utils as dc 
+from SharedCode import twitter_utils as tu
 from SharedCode import random_name_gen_bot
-from SharedCode import (twitter_push, slack_notifications)
-from BadCelebReply import last_tweet_reply
+from SharedCode import slack_notifications
 
-
-# Twitter keys ----
-consumer_key = os.getenv('TwitterConsumerKey1')
-consumer_secret = os.getenv('TwitterConsumerSecretKey1')
-access_token = os.getenv('TwitterAccessTokenKey1')
-access_token_secret = os.getenv('TwitterAccessTokenSecret1')
-
-# pick a random celeb from the list, run the same processes as the other func,
+# NOTES:
+# 1) pick a random celeb from the list, run the same processes as the other func,
 # but in a reply format
+# 2) ALSO - create a HASHTAG function/class... maybe randomize?
+# 3) Create a Kanban board....
 
-# Function ----
+# TimerTrigger Function ----
 def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
@@ -30,11 +26,13 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 
 
-    # Class instantiation for the handling celeb name/twitter username ----
+    # CLASS instantiation: handles & Twitter ops ----
     name_handle_instance = dc.NameHandle()
+    twitter_ops_instance = tu.TwitterOperations()
 
     # Call random name generator script ----
     random_gen = random_name_gen_bot.name_gen()
+    print(random_gen)
 
     # Pull in randomly choosen celeb name and twitter handle + sentence ----
     celeb_tweet = name_handle_instance.name_and_handle_reply(random_gen)
@@ -44,9 +42,15 @@ def main(mytimer: func.TimerRequest) -> None:
     bare_handle = name_handle_instance.handle_only()
     print(bare_handle)
 
-    # Get last Tweet and set up the reply Tweeet
-    last_tweet = last_tweet_reply.last_celeb_tweet(consumer_key, 
-                                                   consumer_secret,
-                                                   access_token, 
-                                                   access_token_secret,
-                                                   bare_handle)
+    # Get latest Tweet ID from bare handle ----
+    latest_id = twitter_ops_instance.get_tweet_id(bare_handle)
+    print(latest_id)
+
+    # Create some hashtags (eventually make function) ----
+    celeb_tweet = celeb_tweet + ' |  #' + bare_handle.replace('@', '') 
+    celeb_tweet = celeb_tweet + '  #' + 'RealCelebrityNames'
+    celeb_tweet = celeb_tweet + '  #' + 'oops'
+    #add random tag from list of popular tags
+
+    # Add Twitter ID and reply Tweet to reply function ----
+    twitter_ops_instance.reply_to_tweet(celeb_tweet, latest_id)
