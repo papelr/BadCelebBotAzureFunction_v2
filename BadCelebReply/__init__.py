@@ -14,6 +14,7 @@ from SharedCode import random_name_gen_bot
 # but in a reply format - DONE
 # 2) ALSO - create a HASHTAG function/class... maybe randomize?
 # 3) Create a Kanban board....
+# 4) Seems to not be replying to correct IDs
 
 # TimerTrigger Function ----
 def main(mytimer: func.TimerRequest) -> None:

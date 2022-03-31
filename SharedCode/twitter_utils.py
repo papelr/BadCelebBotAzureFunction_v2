@@ -44,8 +44,9 @@ class TwitterOperations():
     # Reply to specific Tweets method
     def get_tweet_id(self, twitter_handle):
 
-        # grabbing last Tweet of user (max_id, from Tweepy)
-        tweet_id = self.api.user_timeline(screen_name = twitter_handle) 
+        # grabbing last Tweet of user (from Tweepy)
+        tweet_id = self.api.user_timeline(screen_name=twitter_handle)
+        #code only latest reply, more strict 
         tweet_id = tweet_id[0].id_str
         # print(tweet_id)
 
