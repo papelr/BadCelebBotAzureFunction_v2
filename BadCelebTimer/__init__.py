@@ -44,7 +44,7 @@ def main(mytimer: func.TimerRequest) -> None:
     # Call twitter push script (with error handling & notifs) ----
     try:
         twitter_ops_instance.twit_push(celeb_tweet)
-        slack_notifications.post_worked()
+        slack_notifications.timeline_post_win()
     except:
-        slack_notifications.post_failed()
+        slack_notifications.timeline_post_loss()
 
