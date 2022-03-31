@@ -26,7 +26,7 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 
 
-    # CLASS instantiation: handles & Twitter ops ----
+    # CLASS instantiation: handles / Twitter ops / Slack ----
     name_handle_instance = dc.NameHandle()
     twitter_ops_instance = tu.TwitterOperations()
     slack_notifications = su.SlackNotifications()
