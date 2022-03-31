@@ -1,4 +1,4 @@
-# BadCelebBotAzureFunction_v2.1 - TimerTrigger
+# BadCelebBotAzureFunction_v2.1 - Original TimerTrigger
 
 **March 2022**
 

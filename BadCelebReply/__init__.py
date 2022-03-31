@@ -6,12 +6,12 @@ import logging
 import azure.functions as func
 from SharedCode import name_utils as dc 
 from SharedCode import twitter_utils as tu
+from SharedCode import slack_utils as su
 from SharedCode import random_name_gen_bot
-from SharedCode import slack_notifications
 
 # NOTES:
 # 1) pick a random celeb from the list, run the same processes as the other func,
-# but in a reply format
+# but in a reply format - DONE
 # 2) ALSO - create a HASHTAG function/class... maybe randomize?
 # 3) Create a Kanban board....
 
@@ -29,6 +29,7 @@ def main(mytimer: func.TimerRequest) -> None:
     # CLASS instantiation: handles & Twitter ops ----
     name_handle_instance = dc.NameHandle()
     twitter_ops_instance = tu.TwitterOperations()
+    slack_notifications = su.SlackNotifications()
 
     # Call random name generator script ----
     random_gen = random_name_gen_bot.name_gen()
@@ -53,4 +54,8 @@ def main(mytimer: func.TimerRequest) -> None:
     #add random tag from list of popular tags
 
     # Add Twitter ID and reply Tweet to reply function ----
-    twitter_ops_instance.reply_to_tweet(celeb_tweet, latest_id)
+    try:
+        twitter_ops_instance.reply_to_tweet(celeb_tweet, latest_id)
+        slack_notifications.reply_post_win()
+    except:
+        slack_notifications.reply_post_loss()    

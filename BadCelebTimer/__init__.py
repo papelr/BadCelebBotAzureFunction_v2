@@ -1,4 +1,3 @@
-
 # Packages
 import os
 import sys
@@ -7,8 +6,8 @@ import logging
 import azure.functions as func
 from SharedCode import name_utils as dc
 from SharedCode import twitter_utils as tu
+from SharedCode import slack_utils as su
 from SharedCode import random_name_gen_bot
-from SharedCode import slack_notifications
 
 
 # TimerTriger Function ----
@@ -23,6 +22,7 @@ def main(mytimer: func.TimerRequest) -> None:
     # CLASS instantiation: handles & Twitter ops ----
     name_handle_instance = dc.NameHandle()
     twitter_ops_instance = tu.TwitterOperations()
+    slack_notifications = su.SlackNotifications()
 
     # Call random name generator script ----
     random_gen = random_name_gen_bot.name_gen()
@@ -42,13 +42,9 @@ def main(mytimer: func.TimerRequest) -> None:
     print(celeb_tweet)
 
     # Call twitter push script (with error handling & notifs) ----
-    attempts = 0
-    while attempts < 2:
-        try:
-            twitter_ops_instance.reply_to_tweet(celeb_tweet)
-            slack_notifications.post_worked()
-            break
-        except:
-            attempts += 1
-            slack_notifications.post_failed()
+    try:
+        twitter_ops_instance.twit_push(celeb_tweet)
+        slack_notifications.post_worked()
+    except:
+        slack_notifications.post_failed()
 

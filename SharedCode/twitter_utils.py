@@ -6,7 +6,7 @@ import os
 # Class for Twitter operations ----
 class TwitterOperations():
 
-    '''
+    """
     Functions to grab Twitter IDs (for replying to celebs), functions 
     to push to Twitter, and whatever else is needed for Twitter ops!
 
@@ -14,12 +14,12 @@ class TwitterOperations():
     passed by self all the way through, instead of making them a class variable
     that would have to be passed to every single method that needs them (I think
     this is the smart route, lol)
-    '''   
+    """   
 
     # Constructor function - authorization and keys
     def __init__(self):
 
-        # Twitter keys
+        # Twitter keys from Azure Key Vault
         self.consumer_key = os.getenv('TwitterConsumerKey1')
         self.consumer_secret = os.getenv('TwitterConsumerSecretKey1')
         self.access_token = os.getenv('TwitterAccessTokenKey1')
@@ -57,9 +57,3 @@ class TwitterOperations():
         # set up the reply
         self.api.update_status(reply_text, in_reply_to_status_id=tweet_id,
                                auto_populate_reply_metadata=True) 
-    
-
-# # Testing
-# TwitterOperations().get_tweet_id('@bad_celeb_names')        
-# TwitterOperations().reply_to_tweet('test reply @bad_celeb_names', 
-#                                     1509153488986595328) 
