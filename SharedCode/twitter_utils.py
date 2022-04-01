@@ -3,6 +3,8 @@ import tweepy
 import pandas as pd
 import os
 
+# https://stackoverflow.com/questions/57633896/how-to-stream-tweets-from-a-specified-user-only-stream-when-the-tweet-is-publis
+
 # Class for Twitter operations ----
 class TwitterOperations():
 
