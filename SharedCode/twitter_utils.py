@@ -25,10 +25,7 @@ class TwitterOperations():
         # self.access_token = os.getenv('TwitterAccessTokenKey1')
         # self.access_token_secret = os.getenv('TwitterAccessTokenSecret1')
 
-        self.consumer_key = '2S4qUZ4cYymGGb9VN0AZ9N5kX'
-        self.consumer_secret ='7ZTwAUxUZrVPoSuUGYKBCUAj5nvLF05TTDUjiSDa8ldg52fipd'
-        self.access_token = '1362119469854818309-sAuD43fs6PtBRFFAFRrDkHMQmmHM97'
-        self.access_token_secret = 'VahXHi8pK2cdcGb7uWqIzYDpMsDKB8YwB9yb5XYaOMh0c'
+      
 
         # Twitter authorization
         self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
