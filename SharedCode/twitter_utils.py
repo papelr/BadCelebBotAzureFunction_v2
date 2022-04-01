@@ -20,10 +20,15 @@ class TwitterOperations():
     def __init__(self):
 
         # Twitter keys from Azure Key Vault
-        self.consumer_key = os.getenv('TwitterConsumerKey1')
-        self.consumer_secret = os.getenv('TwitterConsumerSecretKey1')
-        self.access_token = os.getenv('TwitterAccessTokenKey1')
-        self.access_token_secret = os.getenv('TwitterAccessTokenSecret1')
+        # self.consumer_key = os.getenv('TwitterConsumerKey1')
+        # self.consumer_secret = os.getenv('TwitterConsumerSecretKey1')
+        # self.access_token = os.getenv('TwitterAccessTokenKey1')
+        # self.access_token_secret = os.getenv('TwitterAccessTokenSecret1')
+
+        self.consumer_key = '2S4qUZ4cYymGGb9VN0AZ9N5kX'
+        self.consumer_secret ='7ZTwAUxUZrVPoSuUGYKBCUAj5nvLF05TTDUjiSDa8ldg52fipd'
+        self.access_token = '1362119469854818309-sAuD43fs6PtBRFFAFRrDkHMQmmHM97'
+        self.access_token_secret = 'VahXHi8pK2cdcGb7uWqIzYDpMsDKB8YwB9yb5XYaOMh0c'
 
         # Twitter authorization
         self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
@@ -45,7 +50,7 @@ class TwitterOperations():
     def get_tweet_id(self, twitter_handle):
 
         # grabbing last Tweet of user (from Tweepy)
-        tweet_id = self.api.user_timeline(screen_name=twitter_handle)
+        tweet_id = self.api.user_timeline(screen_name=twitter_handle, count=1)
         #code only latest reply, more strict 
         tweet_id = tweet_id[0].id_str
         # print(tweet_id)
@@ -58,3 +63,6 @@ class TwitterOperations():
         # set up the reply
         self.api.update_status(reply_text, in_reply_to_status_id=tweet_id,
                                auto_populate_reply_metadata=True) 
+
+
+
