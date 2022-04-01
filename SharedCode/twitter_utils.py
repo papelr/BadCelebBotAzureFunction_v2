@@ -20,12 +20,10 @@ class TwitterOperations():
     def __init__(self):
 
         # Twitter keys from Azure Key Vault
-        # self.consumer_key = os.getenv('TwitterConsumerKey1')
-        # self.consumer_secret = os.getenv('TwitterConsumerSecretKey1')
-        # self.access_token = os.getenv('TwitterAccessTokenKey1')
-        # self.access_token_secret = os.getenv('TwitterAccessTokenSecret1')
-
-      
+        self.consumer_key = os.getenv('TwitterConsumerKey1')
+        self.consumer_secret = os.getenv('TwitterConsumerSecretKey1')
+        self.access_token = os.getenv('TwitterAccessTokenKey1')
+        self.access_token_secret = os.getenv('TwitterAccessTokenSecret1')
 
         # Twitter authorization
         self.auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
