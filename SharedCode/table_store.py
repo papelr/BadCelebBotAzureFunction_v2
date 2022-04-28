@@ -13,7 +13,6 @@ class InsertDeleteEntity(object):
         # self.account_name = os.getenv("TABLES_STORAGE_ACCOUNT_NAME")
         # self.endpoint = "{}.table.{}".format(self.account_name, self.endpoint_suffix)
         self.connection_string = (
-            "DefaultEndpointsProtocol=https;AccountName=badcelebbotazurefunction;AccountKey=z27QhooGOWMiJ6sGONKgc2TPuilPPuv7YF6Y3pvFqtkcrcFrrBs7kaBgZfZsQ80OOUdR3CJiZy3a+AStSBCPHA==;EndpointSuffix=core.windows.net"
             )
         
         # self.connection_string = (
