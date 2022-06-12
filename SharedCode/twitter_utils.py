@@ -80,7 +80,7 @@ class TwitterOperations():
                                auto_populate_reply_metadata=True) 
 
 
-    # Puts Tweet metadata into a table, for later push to Blob storage
+    # Puts Tweet metadata into a table, for later push to Azure Storage Table
     def tweet_metadata_table(self, twitter_handle, tweet_id, tweet_text,
                              reply_text):
 

@@ -1,59 +1,51 @@
 # Packages
-from datetime import datetime
 import os
 from azure.data.tables import TableClient
-from azure.core.exceptions import ResourceExistsError, HttpResponseError
+from azure.data.tables import TableServiceClient
+from datetime import datetime
 
-# Class lifted from Auzre Table Docs
-class InsertDeleteEntity(object):
+
+# Class for Azure Table Storage - sending each tweet to a table
+class TweetStorage():
+
+    """
+    Text
+    """
 
     def __init__(self):
-        # self.access_key = os.getenv("TABLES_PRIMARY_STORAGE_ACCOUNT_KEY")
-        # self.endpoint_suffix = os.getenv("TABLES_STORAGE_ENDPOINT_SUFFIX")
-        # self.account_name = os.getenv("TABLES_STORAGE_ACCOUNT_NAME")
-        # self.endpoint = "{}.table.{}".format(self.account_name, self.endpoint_suffix)
-        self.connection_string = (
-            )
-        
-        # self.connection_string = (
-        #     "DefaultEndpointsProtocol=https;AccountName={};AccountKey={};EndpointSuffix={}".format(
-        #         self.account_name, self.access_key, self.endpoint_suffix
-        #     )
-        # )
-        self.table_name = "SampleInsertDelete"
 
-        self.entity = {
-            "PartitionKey": "color",
-            "RowKey": "brand",
-            "text": "Marker",
-            "color": "Purple",
-            "price": 4.99,
-            "last_updated": datetime.today(),
-            "product_id": (),
-            "inventory_count": 42,
-            "barcode": b"135aefg8oj0ld58"
+        # Twitter keys from Azure Key Vault
+        self.connx_str = os.getenv('TweetTableConnectionString')
+
+        # Table Service Client
+        self.table_service_client = TableServiceClient.from_connection_string(conn_str = self.connx_str)
+        self.table_client = self.table_service_client.get_table_client(table_name="myTable")
+
+        # set datetime object
+        self.tweet_date = datetime.today()
+
+    def create_or_insert(self, ):
+
+        table_service_client.create_table_if_not_exists()    
+
+    def create_entity_and_push(self, twitter_handle, tweet_id, tweet_text, reply_text):
+
+        # get relevant variables for table
+        TWEET_ID = tweet_id
+        TWEET_HANDLE = twitter_handle
+        TWEET_TEXT = tweet_text
+        REPLY_TEXT = reply_text
+        # date? + time would be useful
+        TWEET_DATE = self.tweet_date
+
+
+        my_entity = {
+            u'Tweet ID': TWEET_ID,
+            u'Celeb Handle': TWEET_HANDLE,
+            u'Tweet Text': TWEET_TEXT,
+            u'Reply Tweet Text': REPLY_TEXT,
+            u'Tweet DateTime': TWEET_DATE
         }
 
-    # create entity (or a record?)
-    def create_entity(self):
+        entity = table_client.create_entity(entity=my_entity)
 
-        with TableClient.from_connection_string(self.connection_string, self.table_name) as table_client:
-
-            # Create a table in case it does not already exist
-            try:
-                table_client.create_table()
-            except HttpResponseError:
-                print("Table already exists")
-
-            # [START create_entity]
-            try:
-                resp = table_client.create_entity(entity=self.entity)
-                print(resp)
-            except ResourceExistsError:
-                print("Entity already exists")
-        # [END create_entity]
-
-
-if __name__ == "__main__":
-    ide = InsertDeleteEntity()
-    ide.create_entity()
