@@ -8,6 +8,7 @@ from SharedCode import name_utils as dc
 from SharedCode import twitter_utils as tu
 from SharedCode import slack_utils as su
 from SharedCode import random_name_gen_bot
+from SharedCode import table_store as ts
 
 # NOTES:
 # 1) pick a random celeb from the list, run the same processes as the other func,
@@ -31,6 +32,7 @@ def main(mytimer: func.TimerRequest) -> None:
     name_handle_instance = dc.NameHandle()
     twitter_ops_instance = tu.TwitterOperations()
     slack_notifications = su.SlackNotifications()
+    table_insertion = ts.TweetStorage()
 
     # Call random name generator script ----
     random_gen = random_name_gen_bot.name_gen()
@@ -44,15 +46,23 @@ def main(mytimer: func.TimerRequest) -> None:
     bare_handle = name_handle_instance.handle_only()
     print(bare_handle)
 
-    # Get latest Tweet ID from bare handle ----
+    # Get latest Tweet ID/Test from bare handle ----
     latest_id = twitter_ops_instance.get_tweet_id(bare_handle)
     print(latest_id)
+
+    latest_text = twitter_ops_instance.get_tweet_text(bare_handle)
+    print(latest_text)
 
     # Create some hashtags (eventually make function) ----
     celeb_tweet = celeb_tweet + ' |  #' + bare_handle.replace('@', '') 
     celeb_tweet = celeb_tweet + '  #' + 'RealCelebrityNames'
     celeb_tweet = celeb_tweet + '  #' + 'oops'
     #add random tag from list of popular tags
+
+    # Put Bot Reply Tweet into table
+    insert_magic = table_insertion.create_entity_and_push(bare_handle, latest_id,
+                                                          xxx, celeb_tweet)
+    print(insert_magic)                                                      
 
     # Add Twitter ID and reply Tweet to reply function ----
     try:
