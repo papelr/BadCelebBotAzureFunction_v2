@@ -61,7 +61,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
     # Put Bot Reply Tweet into table
     insert_magic = table_insertion.create_entity_and_push(bare_handle, latest_id,
-                                                          xxx, celeb_tweet)
+                                                          latest_text, celeb_tweet)
     print(insert_magic)                                                      
 
     # Add Twitter ID and reply Tweet to reply function ----
@@ -69,4 +69,4 @@ def main(mytimer: func.TimerRequest) -> None:
         twitter_ops_instance.reply_to_tweet(celeb_tweet, latest_id)
         slack_notifications.reply_post_win()
     except:
-        slack_notifications.reply_post_loss()    
+        slack_notifications.reply_post_loss()
