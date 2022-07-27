@@ -1,6 +1,7 @@
 # BadCelebBotAzureFunction_v2.1
 
 **March 2022**
+
 **Updated: July 2022**
 
 1) NEW! Azure Function (python) - just two pure python functions, no Selenium (thus, no custom Docker container)
