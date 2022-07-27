@@ -58,6 +58,3 @@ class TweetStorage():
         # insert the entity into table
         # table_service.insert_entity('tasktable', task)
         
-        
-
-#test
