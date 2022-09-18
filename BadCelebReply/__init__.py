@@ -60,8 +60,8 @@ def main(mytimer: func.TimerRequest) -> None:
     #add random tag from list of popular tags
 
     # Put Bot Reply Tweet into table
-    insert_magic = table_insertion.create_entity_and_push(bare_handle, latest_id,
-                                                          latest_text, celeb_tweet)
+    insert_magic = table_insertion.create_entity_and_push(
+        bare_handle, latest_id, latest_text, celeb_tweet)
     print(insert_magic)                                                      
 
     # Add Twitter ID and reply Tweet to reply function ----
