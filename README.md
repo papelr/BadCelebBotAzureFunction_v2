@@ -12,14 +12,18 @@
 
 6) Let's not forget some of these spectacularly clunky python scripts (and one very, **very** mangled class). So, sorry 'bout that, but gotta learn somehow, ya know?
 
-7) The functions now write to an Azure Storage Table, where the functions will compare Tweet IDs of each celeb, to make sure it does not reply to the same celeb (or the same Tweet) in a certain time period. 
+7) The functions now write to an Azure Storage Table, where the functions will compare Tweet IDs of each celeb, to make sure it does not reply to the same celeb (or the same Tweet) in a certain time period
 
 
 # Twitter Account Info
 
 - Twitter Account: https://twitter.com/bad_celeb_names
 - Handle: @bad_celeb_names
+- Questions: if you have any, please feel free to DM the Twitter account or shoot me an email directly (robertpapel@gmail.com)
 
 
 # Disclaimer
 Follow at your own risk! Just kidding, the account actually looks somewhat professional (?!) 
+
+
+Enjoy!
