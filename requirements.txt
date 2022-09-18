@@ -11,3 +11,5 @@ xlrd
 openpyxl
 azure-storage-blob
 azure-identity
+# azure.data
+azure.data.tables

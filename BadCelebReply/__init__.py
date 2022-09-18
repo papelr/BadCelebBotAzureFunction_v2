@@ -57,16 +57,19 @@ def main(mytimer: func.TimerRequest) -> None:
     celeb_tweet = celeb_tweet + ' |  #' + bare_handle.replace('@', '') 
     celeb_tweet = celeb_tweet + '  #' + 'RealCelebrityNames'
     celeb_tweet = celeb_tweet + '  #' + 'oops'
+    print('celeb tweet - all good')
     #add random tag from list of popular tags
 
     # Put Bot Reply Tweet into table
+    bot_type = 'BadCelebReply'
     insert_magic = table_insertion.create_entity_and_push(
-        bare_handle, latest_id, latest_text, celeb_tweet)
+        bare_handle, latest_id, latest_text, celeb_tweet, bot_type)
     print(insert_magic)                                                      
 
     # Add Twitter ID and reply Tweet to reply function ----
     try:
         twitter_ops_instance.reply_to_tweet(celeb_tweet, latest_id)
+        print('tweet post - all good')
         slack_notifications.reply_post_win()
     except:
         slack_notifications.reply_post_loss()
