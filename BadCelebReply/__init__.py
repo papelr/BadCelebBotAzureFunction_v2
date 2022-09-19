@@ -58,7 +58,7 @@ def main(mytimer: func.TimerRequest) -> None:
     celeb_tweet = celeb_tweet + '  #' + 'RealCelebrityNames'
     celeb_tweet = celeb_tweet + '  #' + 'oops'
     print('celeb tweet - all good')
-    #add random tag from list of popular tags
+    #add random tag from list of popular tags?
 
     # Put Bot Reply Tweet into table
     bot_type = 'BadCelebReply'
