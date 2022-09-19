@@ -10,7 +10,14 @@ from azure.core.exceptions import ResourceExistsError, HttpResponseError
 class TweetStorage():
 
     """
-    Text
+    Connects to Azure Storage Account - specifically Table storage;
+
+    For every bot Tweet or reply, the function below stores that Tweet in Table storage, while creating
+    an entity delineated below;
+
+    The PartitionKey and RowKey are bot type/Tweet ID. Need to build out function to ensure Tweets don't
+    target the same celeb in a certain time period
+
     """
 
     def __init__(self):
