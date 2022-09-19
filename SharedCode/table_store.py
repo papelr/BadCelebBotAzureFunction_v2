@@ -22,7 +22,8 @@ class TweetStorage():
 
     def __init__(self):
 
-        # Twitter keys from Azure Key Vault
+        # Azure storage connection string - not stored in key vault, but in the "Configuration" section of the app, 
+        # in the Azure portal
         self.connx_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 
         # Table Service Client
